@@ -20,7 +20,7 @@ class CreateRelpliesSerializer(serializers.ModelSerializer):
         model = Comments
         fields = [
             'relplies',
-            'name',
+            'text',
         ]
 
 
@@ -39,5 +39,9 @@ class GetCommentSerializer(serializers.ModelSerializer):
         model = Comments
         fields = [
             'id',
-            'name',
+            'user_id',
+            # 'rate',
+            'date',
+            'text',
+            'product',
         ]
