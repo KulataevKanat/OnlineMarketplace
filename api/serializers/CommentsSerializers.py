@@ -14,6 +14,7 @@ class CreateCommentSerializer(serializers.ModelSerializer):
         read_only_fields = [
             "id",
             'user_id',
+            'date',
         ]
 
 
@@ -25,6 +26,11 @@ class CreateRelpliesSerializer(serializers.ModelSerializer):
         fields = [
             'relplies',
             'text',
+        ]
+        read_only_fields = [
+            "id",
+            'user_id',
+            'date',
         ]
 
 
@@ -54,7 +60,6 @@ class GetCommentSerializer(serializers.ModelSerializer):
             'date',
             'text',
             'product',
-            'relplies',
+            'relpliess',
         ]
-        depth = 10
 

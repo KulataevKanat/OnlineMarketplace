@@ -64,6 +64,9 @@ class Comments(BaseModel):
     relplies = models.ForeignKey('self', on_delete=models.CASCADE, null=True, related_name='add_relplies')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, related_name='product')
 
+    def relpliess(self):
+        return self.add_relplies.all().values('id', 'user_id', 'text', 'date')
+
     class Meta:
         verbose_name = _('Комментарий')
         verbose_name_plural = _('Комментарии')

@@ -41,7 +41,7 @@ class UpdateCommentByIdView(generics.UpdateAPIView):
 class GetCommentView(generics.ListAPIView):
     """Вывод комментарий"""
 
-    queryset = Comments.objects.filter(relplies= not None)
+    queryset = Comments.objects.filter(relplies=None)
     serializer_class = CommentsSerializers.GetCommentSerializer
 
 
