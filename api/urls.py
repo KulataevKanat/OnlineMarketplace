@@ -3,7 +3,7 @@ from rest_framework.decorators import permission_classes, authentication_classes
 from rest_framework.permissions import AllowAny
 
 from api.authentication import SafeJWTAuthentication
-from api.views import CategoryViews, ProductViews, UserViews, GroupViews, CommentsViews, CartViews
+from api.views import CategoryViews, ProductViews, UserViews, GroupViews, CommentsViews, CartViews, OrdersViews
 
 urlpatterns = [
     # GROUPS
@@ -127,6 +127,19 @@ urlpatterns = [
              permission_classes([AllowAny])(CartViews.FindCartByIdView)).as_view()),
 
     # ORDERS
-
-    # PRODUCT_HISTORY
+    path("order/create_order/",
+         authentication_classes([SafeJWTAuthentication])(
+             permission_classes([AllowAny])(OrdersViews.CreateOrderView)).as_view()),
+    path("order/delete_order_by_id/<int:pk>/",
+         authentication_classes([SafeJWTAuthentication])(
+             permission_classes([AllowAny])(OrdersViews.DeleteOrderByIdView)).as_view()),
+    path("order/delete_all_orders/",
+         authentication_classes([SafeJWTAuthentication])(
+             permission_classes([AllowAny])(OrdersViews.DeleteAllOrdersView)).as_view()),
+    path("order/find_all_orders/",
+         authentication_classes([SafeJWTAuthentication])(
+             permission_classes([AllowAny])(OrdersViews.GetOrdersView)).as_view()),
+    path("order/find_order_by_id/<int:pk>/",
+         authentication_classes([SafeJWTAuthentication])(
+             permission_classes([AllowAny])(OrdersViews.FindOrderByIdView)).as_view()),
 ]
