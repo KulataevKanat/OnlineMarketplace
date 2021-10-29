@@ -10,6 +10,10 @@ class CreateCartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
         fields = '__all__'
+        read_only_fields = [
+            "id",
+            'customer_id',
+        ]
 
 
 class UpdateCartSerializer(serializers.ModelSerializer):
@@ -18,6 +22,10 @@ class UpdateCartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
         fields = '__all__'
+        read_only_fields = [
+            "id",
+            'customer_id',
+        ]
 
 
 class GetCartSerializer(serializers.ModelSerializer):
