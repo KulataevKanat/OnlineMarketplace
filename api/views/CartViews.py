@@ -10,7 +10,7 @@ class CreateCartView(generics.CreateAPIView):
     serializer_class = CartSerializers.CreateCartSerializer
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        serializer.save(customer_id=self.request.user)
 
 
 class DeleteCartByIdView(generics.DestroyAPIView):
@@ -26,7 +26,7 @@ class UpdateCartByIdView(generics.UpdateAPIView):
     serializer_class = CartSerializers.UpdateCartSerializer
 
     def perform_update(self, serializer):
-        serializer.save(user=self.request.user)
+        serializer.save(customer_id=self.request.user)
 
 
 class GetCartView(generics.ListAPIView):
