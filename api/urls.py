@@ -3,7 +3,7 @@ from rest_framework.decorators import permission_classes, authentication_classes
 from rest_framework.permissions import AllowAny
 
 from api.authentication import SafeJWTAuthentication
-from api.views import CategoryViews, ProductViews, UserViews, GroupViews, CommentsViews
+from api.views import CategoryViews, ProductViews, UserViews, GroupViews, CommentsViews, CartViews
 
 urlpatterns = [
     # GROUPS
@@ -110,6 +110,21 @@ urlpatterns = [
              permission_classes([AllowAny])(CommentsViews.FindCommentByIdView)).as_view()),
 
     # CART
+    path("cart/create_cart/",
+         authentication_classes([SafeJWTAuthentication])(
+             permission_classes([AllowAny])(CartViews.CreateCartView)).as_view()),
+    path("cart/delete_cart_by_id/<int:pk>/",
+         authentication_classes([SafeJWTAuthentication])(
+             permission_classes([AllowAny])(CartViews.DeleteCartByIdView)).as_view()),
+    path("cart/update_cart_by_id/<int:pk>/",
+         authentication_classes([SafeJWTAuthentication])(
+             permission_classes([AllowAny])(CartViews.UpdateCartByIdView)).as_view()),
+    path("cart/find_all_carts/",
+         authentication_classes([SafeJWTAuthentication])(
+             permission_classes([AllowAny])(CartViews.GetCartView)).as_view()),
+    path("cart/find_cart_by_id/<int:pk>/",
+         authentication_classes([SafeJWTAuthentication])(
+             permission_classes([AllowAny])(CartViews.FindCartByIdView)).as_view()),
 
     # ORDERS
 
