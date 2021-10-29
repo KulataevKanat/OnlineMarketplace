@@ -104,7 +104,6 @@ class ProductHistory(BaseModel):
                                related_name="orders")
     prod_id = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True,
                                 related_name="prod_id")
-    name = models.CharField(max_length=1000, blank=True, null=True)
     title = models.CharField(max_length=100, blank=True, default='product_title')
     description = models.CharField(max_length=500, blank=True, default='product_description')
     creation_date = models.DateTimeField(auto_now_add=True)
