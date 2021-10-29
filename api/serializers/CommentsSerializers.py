@@ -11,6 +11,10 @@ class CreateCommentSerializer(serializers.ModelSerializer):
         exclude = [
             'relplies',
         ]
+        read_only_fields = [
+            "id",
+            'user_id',
+        ]
 
 
 class CreateRelpliesSerializer(serializers.ModelSerializer):
@@ -30,10 +34,16 @@ class UpdateCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
         fields = '__all__'
+        read_only_fields = [
+            "id",
+            'user_id',
+        ]
 
 
 class GetCommentSerializer(serializers.ModelSerializer):
     """Вывод комментарий"""
+
+    user_id = serializers.StringRelatedField()
 
     class Meta:
         model = Comments
@@ -44,4 +54,7 @@ class GetCommentSerializer(serializers.ModelSerializer):
             'date',
             'text',
             'product',
+            'relplies',
         ]
+        depth = 10
+
